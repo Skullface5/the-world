@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title data-i18n="adminTitle">Administration — The World</title>
+<link rel="apple-touch-icon" sizes="180x180" href="../i/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../i/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../i/favicon-16x16.png">
+<link rel="manifest" href="../i/site.webmanifest">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-row">
+    <a href="../#top" class="brand">
+      <div class="brand-mark"><img src="../i/ste-mondial-perfumes.png" alt="The World" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">TW</span></div>
+      <div class="brand-name"><b data-i18n="brandName">The World</b><small data-i18n="brandSub">Maison de Parfums</small></div>
+    </a>
+    <nav class="admin-nav">
+      <a href="adminorders.html" class="btn-outline" data-i18n="adminOrders">Commandes</a>
+      <a href="../#top" class="btn-outline" data-i18n="adminBackToShop">Retour à la boutique</a>
+    </nav>
+  </div>
+</header>
+
+<main class="admin-wrap">
+  <h1 data-i18n="adminProductsTitle">Gestion des produits</h1>
+
+  <div class="admin-card">
+    <h2 data-i18n="adminHeroTitle">Image Héro</h2>
+    <div class="admin-hero-preview" id="heroPreview">
+      <img id="heroImageDisplay" src="promo-banner.jpg" alt="Hero" onerror="this.style.display='none'">
+    </div>
+    <div class="admin-form-row">
+      <input type="text" id="heroImageUrl" placeholder="URL de l'image héro (ou PromoBanner.jpg)">
+      <button class="btn-solid" id="heroImageSave" data-i18n="adminSave">Enregistrer</button>
+    </div>
+    <p class="admin-hint" data-i18n="adminHeroHint">Conseil : utilisez un lien absolu ou importez dans /i/.</p>
+  </div>
+
+  <div class="admin-card">
+    <h2 data-i18n="adminProductFormTitle">Nouveau produit</h2>
+    <form id="productForm" class="admin-form">
+      <input type="hidden" id="productId">
+      <div class="admin-form-row">
+        <label data-i18n="productName">Nom</label>
+        <input type="text" id="productName" required>
+      </div>
+      <div class="admin-form-row">
+        <label data-i18n="productCategory">Catégorie</label>
+        <select id="productCategory">
+          <option value="men">Homme</option>
+          <option value="women">Femme</option>
+          <option value="kids">Enfant</option>
+          <option value="unisexe">Unisexe</option>
+        </select>
+      </div>
+      <div class="admin-form-row">
+        <label data-i18n="productPrice">Prix (TND)</label>
+        <input type="number" id="productPrice" step="0.001" required>
+      </div>
+      <div class="admin-form-row">
+        <label data-i18n="productStock">Stock</label>
+        <input type="number" id="productStock" step="1" required>
+      </div>
+      <div class="admin-form-row">
+        <label data-i18n="productImage">Image URL</label>
+        <input type="text" id="productImage" placeholder="https://...">
+      </div>
+      <div class="admin-form-row">
+        <label data-i18n="productDescription">Description</label>
+        <textarea id="productDescription"></textarea>
+      </div>
+      <div class="admin-form-actions">
+        <button type="submit" class="btn-solid" data-i18n="adminSave">Enregistrer</button>
+        <button type="button" class="btn-outline" id="productReset" data-i18n="adminReset">Réinitialiser</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="admin-card">
+    <h2 data-i18n="adminListTitle">Liste des produits</h2>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Nom</th><th>Catégorie</th><th>Prix</th><th>Stock</th><th></th></tr></thead>
+        <tbody id="productTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap"><small>&copy; <span id="year"></span> The World — <span data-i18n="footerRights">Tous droits réservés.</span></small></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title data-i18n="adminOrdersTitle">Commandes — The World</title>
+<link rel="apple-touch-icon" sizes="180x180" href="../i/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../i/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../i/favicon-16x16.png">
+<link rel="manifest" href="../i/site.webmanifest">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+<header class="site-header">
+ <div class="header-row">
+  <a href="../#top" class="brand">
+   <div class="brand-mark"><img src="../i/ste-mondial-perfumes.png" alt="The World" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span style="display:none">TW</span></div>
+   <div class="brand-name"><b data-i18n="brandName">The World</b><small data-i18n="brandSub">Maison de Parfums</small></div>
+  </a>
+  <nav class="admin-nav">
+   <a href="admin.html" class="btn-outline" data-i18n="adminProducts">Produits</a>
+   <a href="../#top" class="btn-outline" data-i18n="adminBackToShop">Retour à la boutique</a>
+  </nav>
+ </div>
+</header>
+
+<main class="admin-wrap">
+ <h1 data-i18n="adminOrdersTitle">Commandes</h1>
+
+ <div class="admin-card">
+  <div class="admin-toolbar">
+   <input type="text" id="orderSearch" data-i18n-ph="adminSearchPh" placeholder="Rechercher par nom, téléphone, email, n° commande...">
+   <select id="orderStatusFilter">
+    <option value="all" data-i18n="statusAll">Tous</option>
+    <option value="pending" data-i18n="statusPending">En attente</option>
+    <option value="confirmed" data-i18n="statusConfirmed">Confirmée</option>
+    <option value="shipped" data-i18n="statusShipped">Expédiée</option>
+    <option value="delivered" data-i18n="statusDelivered">Livrée</option>
+    <option value="cancelled" data-i18n="statusCancelled">Annulée</option>
+   </select>
+  </div>
+ </div>
+
+ <div class="admin-card">
+  <div class="admin-table-wrap">
+   <table class="admin-table">
+    <thead>
+     <tr>
+      <th>N°</th>
+      <th>Client</th>
+      <th>Téléphone</th>
+      <th>Email</th>
+      <th>Total</th>
+      <th>Statut</th>
+      <th>Date</th>
+      <th></th>
+     </tr>
+    </thead>
+    <tbody id="ordersTableBody"></tbody>
+   </table>
+  </div>
+ </div>
+</main>
+
+<footer class="site-footer">
+ <div class="wrap"><small>&copy; <span id="year"></span> The World — <span data-i18n="footerRights">Tous droits réservés.</span></small></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/adminorders.js"></script>
+</body>
+</html>
