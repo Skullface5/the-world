@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil | Ste Mondial Parfums</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream: #F8F6F0;
+      --cream-dark: #EFECE4;
+      --cream-deep: #E4DFD3;
+      --gold: #B3735B;
+      --gold-light: #D49B85;
+      --gold-dark: #8C523C;
+      --charcoal: #201A30;
+      --text-mid: #685E7D;
+      --white: #FCFBFA;
+      --card-warm: #EBE7DE;
+      --border-light: rgba(179, 115, 92, 0.20);
+      --shadow-md: 0 6px 20px rgba(40, 30, 60, 0.06);
+    }
+    body.dark {
+      --cream: #0A0812;
+      --cream-dark: #141124;
+      --cream-deep: #1F1B36;
+      --card-warm: #1C1733;
+      --charcoal: #EAE7F0;
+      --text-mid: #A5A0B8;
+      --gold: #D49B85;
+      --gold-light: #E8B9A6;
+      --gold-dark: #B3735B;
+      --white: #0A0812;
+      --border-light: rgba(212, 155, 133, 0.22);
+    }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container { max-width: 800px; margin: 40px auto; padding: 2rem; width: 90%; background: var(--card-warm); border-radius: 24px; box-shadow: var(--shadow-md); border: 1px solid var(--border-light); }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; margin-bottom: 1.5rem; color: var(--gold-dark); text-align: center; }
+    .profile-info { margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .profile-info span { font-weight: 500; color: var(--gold-dark); }
+    .btn { display: inline-block; padding: 10px 24px; background: var(--gold-dark); color: var(--white); border: none; border-radius: 50px; cursor: pointer; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.3s; }
+    .btn:hover { background: var(--charcoal); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mon Profil</h1>
+    <div class="profile-info" id="userInfo">Chargement des informations...</div>
+    <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Retour à la boutique</a>
+  </div>
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+    const user = JSON.parse(localStorage.getItem('theworld_user') || 'null');
+    const container = document.getElementById('userInfo');
+    if (user) {
+      container.innerHTML = `<p><span>Nom / Email:</span> ${user.email || user.name || 'Client'}</p>`;
+    } else {
+      container.innerHTML = `<p>Aucun utilisateur connecté.</p><br><a href="index.html" class="btn">Se connecter</a>`;
+    }
+  </script>
+</body>
+</html>
