@@ -1187,15 +1187,25 @@
       color: var(--text-mid);
     }
 
-    .cart-footer {
-      border-top: 1px solid var(--border-light);
-      padding-top: 0.8rem;
-      /* ✅ FIX: Proper padding for mobile safe areas (notch/home indicator) */
-      padding-bottom: max(1.2rem, env(safe-area-inset-bottom, 1.2rem));
-      background: inherit;
-      margin-top: auto;
-      /* ✅ Push footer to bottom */
+    .cart-
+    /* Footer visibility fixes */
+    footer {
+      background: #E2E8F0;
+      color: #334155;
+      padding: 60px 40px 28px;
+      margin-top: 2rem;
     }
+    body.dark footer {
+      background: #0F172A;
+      color: #94A3B8;
+    }
+    .footer-col h4 {
+      color: #1D4ED8; /* Using a clear blue/accent for headers */
+    }
+    body.dark .footer-col h4 {
+      color: #60A5FA;
+    }
+
 
     .cart-total {
       display: flex;
